@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Wipsnickit</title>
+  <title>WIPsnickit</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<div>
+  <ul class="nav">
+    <% if current_user %>
+      <li>user: <%= current_user.username %></li>
+      <li>email: <%= current_user.email %></li>
+      <li><%= link_to("log out", session_path, method: :delete) %></li>
+    <% else %>
+      <li>
+        <%= link_to "log in", new_session_url %>
+      </li>
+      <li>
+        <%= link_to "sign up", new_user_url %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="errors">
+  <% flash[:errors].try(:each) do |error| %>
+    <div class="alert">
+      <%= error %>
+    </div>
+  <% end %>
+</div>
 
 <%= yield %>
 

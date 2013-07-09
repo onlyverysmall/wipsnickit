@@ -11,3 +11,7 @@
  *= require_self
  *= require_tree .
  */
+
+.nav {
+  list-style: none;
+}
