@@ -4,11 +4,9 @@ window.Wipsnickit = {
   Views: {},
   Routers: {},
   initialize: function() {
-    console.log('Hello from Backbone!');
+    Wipsnickit.projects = new Wipsnickit.Collections.Projects();
 
-    Wipsnickit.users = new Wipsnickit.Collections.Users();
-
-    new Wipsnickit.Routers.Users({
+    new Wipsnickit.Routers.Projects({
       $rootEl: $('#content')
     });
     Backbone.history.start();

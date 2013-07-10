@@ -1,0 +1,33 @@
+<div class="span8 offset1 main">
+  <ul class="nav nav-tabs">
+    <li>
+      <a href="#">My WIPs</a>
+    </li>
+    <li>
+      <a href="#api/projects/new">New Project</a>
+    </li>
+    <li class="active">
+      <a href="#"><%= project.escape('title') %></a>
+    </li>    
+  </ul>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td><strong>Title</strong></td>
+        <td><strong>Type</strong></td>
+        <td><strong>Status</strong></td>
+        <td><strong>Completion date</strong></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= project.escape('title') %></td>
+        <td><%= project.escape('type_name') %></td>
+        <td><%= project.escape('status_name') %></td>
+        <td><%= project.escape('completion_date') %></td>
+        <td><a href="#api/projects/<%= project.id %>/edit">Edit</a>
+      </tr>
+    </tbody>
+  </table>
+</div>

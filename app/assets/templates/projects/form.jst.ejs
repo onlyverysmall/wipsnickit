@@ -1,0 +1,55 @@
+<% var menu = (project.isNew()) ? "New Project" : project.escape('title') %>
+
+
+<div class="span8 offset1 main">
+  <ul class="nav nav-tabs">
+    <li>
+      <a href="#">My WIPs</a>
+    </li>
+    <li  class="active">
+      <a href="#api/projects/new"><%= menu %></a>
+    </li>
+  </ul>
+
+  <form>
+    <table class="span7">
+      <tr>
+        <td>
+          <input type="text" name="project[title]" placeholder="Project title" value="<%= project.escape('title') %>">
+        </td>
+        <td>
+          <select name="project[type_id]" class="span2">            
+            <option value="">Project Type</option>
+            <%  %>
+              <option value="1">type</option>
+            <%  %>
+          </select>
+        </td>
+        <td>
+          <select name="project[status_id]" class="span2">
+            <option value="">Status</option>
+            <%  %>
+              <option value="1">status</option>
+            <%  %>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="project_completion_date">Completion Date</label>
+          <input type="date" name="project[completion_date]" id="project_completion_date" class="span2">
+        </td>
+        <td colspan="2">
+          <label for="project_notes">Optional: Notes</label>
+          <textarea name="project[notes]" id="project_notes" placeholder="Notes"><%= project.escape('notes') %></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="3">
+          <input type="submit" value="Create Project" class="btn pull-right">
+        </td>
+      </tr>
+    </form>
+  </table>
+</div>

@@ -1,12 +1,18 @@
-<% if current_user %>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      Wipsnickit.initialize();
-    });
-  </script>
-<% end %>
-
 <div id="content">
-  <%= render partial: "shared/log_in" %>
-  <%= render partial: "shared/sign_up" %>
+  <ul class="projects"></ul>
+
+  <% if logged_in? %>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        Wipsnickit.initialize();
+      });
+    </script>
+  
+  <% else %>
+
+    <%= render partial: "shared/log_in" %>
+    <%= render partial: "shared/sign_up" %>
+
+  <% end %>
 </div>

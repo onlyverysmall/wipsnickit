@@ -27,4 +27,8 @@ class User < ActiveRecord::Base
   def verify_password(password)
     BCrypt::Password.new(self.password_digest) == password
   end
+
+  def types
+    Type.where(user_id: [nil, self.id]).all
+  end
 end
