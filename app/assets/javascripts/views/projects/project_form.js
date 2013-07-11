@@ -7,7 +7,9 @@ Wipsnickit.Views.ProjectForm = Backbone.View.extend({
 
   render: function () {
     var renderedContent = this.template({
-      project: this.model
+      project: this.model,
+      statuses: Wipsnickit.statuses,
+      types: Wipsnickit.types
     });
 
     this.$el.html(renderedContent);
@@ -17,17 +19,18 @@ Wipsnickit.Views.ProjectForm = Backbone.View.extend({
 
   submit: function(event) {
     event.preventDefault();
-    
+
+    var that = this;
     var attrs = $(event.target.form).serializeJSON();
 
     var options = {
-      success: function() {
+      success: function() {    
         Backbone.history.navigate('#', { trigger: true });
       }
     };
 
     this.model.set(attrs);
-    console.log(this.model)
+
     if (this.model.isNew()) {
       this.collection.create(this.model, options);
     } else {

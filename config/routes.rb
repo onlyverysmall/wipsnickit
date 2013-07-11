@@ -4,7 +4,8 @@ Wipsnickit::Application.routes.draw do
   
   scope "api", defaults: { format: :json } do 
     resources :projects, only: [:create, :destroy, :index, :show, :update]
-    resources :types, only: :create
+    resources :types, only: [:create, :index]
+    resources :statuses, only: :index
   end
 
   root to: "root#root"

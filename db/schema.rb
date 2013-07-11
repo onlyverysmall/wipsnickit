@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130709185508) do
+ActiveRecord::Schema.define(:version => 20130711163009) do
 
   create_table "projects", :force => true do |t|
     t.string   "title",                          :null => false
@@ -33,6 +33,20 @@ ActiveRecord::Schema.define(:version => 20130709185508) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "steps", :force => true do |t|
+    t.string   "name",                               :null => false
+    t.integer  "project_id",                         :null => false
+    t.integer  "priority_number",                    :null => false
+    t.text     "notes"
+    t.boolean  "completed",       :default => false, :null => false
+    t.date     "completion_date"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+  end
+
+  add_index "steps", ["completion_date"], :name => "index_steps_on_completion_date"
+  add_index "steps", ["project_id"], :name => "index_steps_on_project_id"
 
   create_table "types", :force => true do |t|
     t.string   "name",       :null => false

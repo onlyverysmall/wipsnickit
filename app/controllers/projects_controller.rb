@@ -16,7 +16,6 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = current_user.projects
-    @types = current_user.types
 
     render :index
   end
@@ -30,5 +29,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     respond_with @project.update_attributes(params[:project])
+
+    p @project.errors.full_messages
   end
 end

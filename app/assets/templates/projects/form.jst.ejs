@@ -1,14 +1,19 @@
-<% var menu = (project.isNew()) ? "New Project" : project.escape('title') %>
-
+<% var active = (project.isNew()) ? 'active' : '' %>
+<% var submit = (project.isNew()) ? 'Create Project' : 'Update Project' %>
 
 <div class="span8 offset1 main">
   <ul class="nav nav-tabs">
     <li>
       <a href="#">My WIPs</a>
     </li>
-    <li  class="active">
-      <a href="#api/projects/new"><%= menu %></a>
+    <li class="<%= active %>">
+      <a href="#api/projects/new">New Project</a>
     </li>
+    <% if (project.has('id')) { %>
+      <li class="active">
+        <a href="#api/projects/<%= project.id %>/edit"><%= project.escape('title') %></a>
+      </li>
+    <% }; %>
   </ul>
 
   <form>
@@ -20,24 +25,30 @@
         <td>
           <select name="project[type_id]" class="span2">            
             <option value="">Project Type</option>
-            <%  %>
-              <option value="1">type</option>
-            <%  %>
+            <% types.each(function(type) { %>
+              <% var typeSelect = (project.get('type_id') == type.id) ? 'selected' : '' %>
+              <option value="<%= type.id %>" <%= typeSelect %>>
+                <%= type.escape('name') %>
+              </option>
+            <% }); %>
           </select>
         </td>
         <td>
           <select name="project[status_id]" class="span2">
             <option value="">Status</option>
-            <%  %>
-              <option value="1">status</option>
-            <%  %>
+            <% statuses.each(function(status) { %>
+              <% var selected = (project.get('status_id') == status.id) ? 'selected' : '' %>
+              <option value="<%= status.id %>" <%= selected %>>
+                <%= status.escape('name') %>
+              </option>
+            <% }); %>
           </select>
         </td>
       </tr>
       <tr>
         <td>
           <label for="project_completion_date">Completion Date</label>
-          <input type="date" name="project[completion_date]" id="project_completion_date" class="span2">
+          <input type="date" name="project[completion_date]" id="project_completion_date" value="<%= project.get('completion_date') %>">
         </td>
         <td colspan="2">
           <label for="project_notes">Optional: Notes</label>
@@ -47,7 +58,7 @@
 
       <tr>
         <td colspan="3">
-          <input type="submit" value="Create Project" class="btn pull-right">
+          <input type="submit" value="<%= submit %>" class="btn pull-right">
         </td>
       </tr>
     </form>

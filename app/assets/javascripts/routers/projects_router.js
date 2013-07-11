@@ -13,6 +13,8 @@ Wipsnickit.Routers.Projects = Backbone.Router.extend({
   index: function() {
     var that = this;
     
+    Wipsnickit.statuses.fetch();
+    Wipsnickit.types.fetch()
     that._withProjects(function(projects) {
       var indexView = new Wipsnickit.Views.ProjectsIndex({
         collection: Wipsnickit.projects
@@ -39,7 +41,7 @@ Wipsnickit.Routers.Projects = Backbone.Router.extend({
 
     that._withProject(id, function(project) {
       var editView = new Wipsnickit.Views.ProjectForm({
-        model: project
+        model: project,
       });
 
       that._swapView(editView);

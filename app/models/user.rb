@@ -22,13 +22,14 @@ class User < ActiveRecord::Base
   has_many :projects, dependent: :destroy
   has_many :project_types, 
     class_name: "Type", 
-      dependent: :destroy
+    dependent: :destroy
+  has_many :steps, through: :projects
 
   def verify_password(password)
     BCrypt::Password.new(self.password_digest) == password
   end
 
-  def types
+  def user_types
     Type.where(user_id: [nil, self.id]).all
   end
 end
