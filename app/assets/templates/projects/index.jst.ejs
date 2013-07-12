@@ -12,26 +12,12 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <td><strong>Title</strong></td>
-        <td><strong>Type</strong></td>
-        <td><strong>Status</strong></td>
-        <td><strong>Completion date</strong></td>
+        <th><strong>Title</strong></th>
+        <th><strong>Type</strong></th>
+        <th><strong>Status</strong></th>
+        <th><strong>Completion date</strong></th>
       </tr>
     </thead>
-    <tbody>
-      <% projects.each(function (project) { %>
-        <tr data-id="<%= project.id %>">
-          <td>
-            <a href="#api/projects/<%= project.id %>">
-              <%= project.escape("title") %>
-            </a>
-          </td>
-          <td><%= project.escape("type_name") %></td>
-          <td><%= project.escape("status_name") %></td>
-          <td><%= project.escape("completion_date") %></td>
-          <td><a href="#api/projects/<%= project.id %>/edit">Edit</a>
-        </tr>
-      <% }); %>
     </tbody>
   </table>
 </div>

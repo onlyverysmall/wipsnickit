@@ -21,4 +21,6 @@ class Step < ActiveRecord::Base
 
   belongs_to :project
   has_one :user, through: :project
+
+  default_scope :order => 'priority_number'
 end

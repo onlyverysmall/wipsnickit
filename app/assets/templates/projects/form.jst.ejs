@@ -1,5 +1,4 @@
 <% var active = (project.isNew()) ? 'active' : '' %>
-<% var submit = (project.isNew()) ? 'Create Project' : 'Update Project' %>
 
 <div class="span8 offset1 main">
   <ul class="nav nav-tabs">
@@ -11,7 +10,9 @@
     </li>
     <% if (project.has('id')) { %>
       <li class="active">
-        <a href="#api/projects/<%= project.id %>/edit"><%= project.escape('title') %></a>
+        <a href="#api/projects/<%= project.id %>/edit">
+          <%= project.escape('title') %>
+        </a>
       </li>
     <% }; %>
   </ul>
@@ -53,12 +54,6 @@
         <td colspan="2">
           <label for="project_notes">Optional: Notes</label>
           <textarea name="project[notes]" id="project_notes" placeholder="Notes"><%= project.escape('notes') %></textarea>
-        </td>
-      </tr>
-
-      <tr>
-        <td colspan="3">
-          <input type="submit" value="<%= submit %>" class="btn pull-right">
         </td>
       </tr>
     </form>

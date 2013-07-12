@@ -1,5 +1,5 @@
-Wipsnickit.Views.StepsIndex = Backbone.View.extend({
-  template: JST['steps/index'],
+Wipsnickit.Views.StepsForm = Backbone.View.extend({
+  template: JST['steps/form'],
 
   render: function () {
     var renderedContent = this.template({

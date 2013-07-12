@@ -1,8 +1,4 @@
 Wipsnickit.Views.ProjectsIndex = Backbone.View.extend({
-  events: {
-    'click tr': 'editRow'
-  },
-
   template: JST['projects/index'],
 
   initialize: function () {
@@ -16,14 +12,16 @@ Wipsnickit.Views.ProjectsIndex = Backbone.View.extend({
 
     this.$el.html(renderedContent);
 
+    var $tbody = this.$('table');
+
+    this.collection.each(function(project) {
+      var row = new Wipsnickit.Views.ProjectRow({
+        model: project
+      });
+
+      $tbody.append(row.render().el);
+    });
+
     return this;
-  },
-
-  editRow: function(event) {
-    var id = $(event.currentTarget).attr('data-id');
-
-    // create a function on the model to edit the row, call it here
-    
   }
-
 });

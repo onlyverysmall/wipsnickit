@@ -14,7 +14,7 @@ Wipsnickit.Routers.Projects = Backbone.Router.extend({
     var that = this;
     
     Wipsnickit.statuses.fetch();
-    Wipsnickit.types.fetch()
+    Wipsnickit.types.fetch();
     that._withProjects(function(projects) {
       var indexView = new Wipsnickit.Views.ProjectsIndex({
         collection: Wipsnickit.projects

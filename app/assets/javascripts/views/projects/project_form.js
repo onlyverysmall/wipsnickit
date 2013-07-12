@@ -14,6 +14,14 @@ Wipsnickit.Views.ProjectForm = Backbone.View.extend({
 
     this.$el.html(renderedContent);
 
+    if (this.model.get('steps')) {
+      var steps = new Wipsnickit.Views.StepsForm({
+      collection: this.model.get('steps')
+    });
+
+    this.$('form').append(steps.render().el);
+    }
+
     return this;
   },
 

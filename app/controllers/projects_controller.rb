@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-
+    
     respond_with @project.update_attributes(params[:project])
 
     p @project.errors.full_messages

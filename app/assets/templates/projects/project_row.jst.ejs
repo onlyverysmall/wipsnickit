@@ -1,0 +1,11 @@
+<tr data-id="<%= project.id %>">
+  <td>
+    <a href="#api/projects/<%= project.id %>">
+      <%= project.escape("title") %>
+    </a>
+  </td>
+  <td><%= project.escape("type_name") %></td>
+  <td><%= project.escape("status_name") %></td>
+  <td><%= project.escape("completion_date") %></td>
+  <td><a href="#api/projects/<%= project.id %>/edit">Edit</a>
+</tr>
