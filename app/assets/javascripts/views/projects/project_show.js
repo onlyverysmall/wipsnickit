@@ -12,13 +12,13 @@ Wipsnickit.Views.ProjectView = Backbone.View.extend({
         model: this.model
       });
 
-    this.$('table').append(row.render().el);
+    this.$('table').append(row.render().$el);
 
     var steps = new Wipsnickit.Views.StepsIndex({
       collection: this.model.get('steps')
     });
 
-    this.$el.append(steps.render().el);
+    this.$el.append(steps.render().$el);
 
     return this;
   }

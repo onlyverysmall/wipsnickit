@@ -1,4 +1,8 @@
 Wipsnickit.Views.StepsForm = Backbone.View.extend({
+  events: {
+    'click .add-step' : 'addStep'
+  },
+
   template: JST['steps/form'],
 
   render: function () {
@@ -9,6 +13,13 @@ Wipsnickit.Views.StepsForm = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     return this;
+  },
+
+  addStep: function(event) {
+    event.preventDefault();
+    console.log('clicky');
+
+    this.$('.steps-rows').append('hi');
   }
 
 });

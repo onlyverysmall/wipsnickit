@@ -1,24 +1,6 @@
-<% var active = (project.isNew()) ? 'active' : '' %>
-
-<div class="span8 offset1 main">
-  <ul class="nav nav-tabs">
-    <li>
-      <a href="#">My WIPs</a>
-    </li>
-    <li class="<%= active %>">
-      <a href="#api/projects/new">New Project</a>
-    </li>
-    <% if (project.has('id')) { %>
-      <li class="active">
-        <a href="#api/projects/<%= project.id %>/edit">
-          <%= project.escape('title') %>
-        </a>
-      </li>
-    <% }; %>
-  </ul>
-
+<div class="main">
   <form>
-    <table class="span7">
+    <table>
       <tr>
         <td>
           <input type="text" name="project[title]" placeholder="Project title" value="<%= project.escape('title') %>">
@@ -45,13 +27,11 @@
             <% }); %>
           </select>
         </td>
-      </tr>
-      <tr>
         <td>
           <label for="project_completion_date">Completion Date</label>
           <input type="date" name="project[completion_date]" id="project_completion_date" value="<%= project.get('completion_date') %>">
         </td>
-        <td colspan="2">
+        <td>
           <label for="project_notes">Optional: Notes</label>
           <textarea name="project[notes]" id="project_notes" placeholder="Notes"><%= project.escape('notes') %></textarea>
         </td>

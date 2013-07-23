@@ -1,9 +1,8 @@
-<div class="span8 offset1 main">
+<div class="main">
   <table class="table table-hover">
     <thead>
       <th><strong>Step name</strong></th>
-      <th><strong>Type</strong></th>
-      <th><strong>Status</strong></th>
+      <th><strong>Notes</strong></th>
       <th><strong>Completed?</strong></th>
       <th><strong>Completion date</strong></th>
     </thead>
@@ -14,7 +13,7 @@
             <a href="#api/steps/<%= step.id %>">
               <%= step.escape('name') %>
             </a>
-          <td>
+          </td>
           <td><%= step.escape('notes') %></td>
           <td><%= step.escape('completed') %></td>
           <td><%= step.escape('completion_date') %></td>

@@ -12,15 +12,18 @@ Wipsnickit.Routers.Projects = Backbone.Router.extend({
 
   index: function() {
     var that = this;
-    
+
+    that._appendNav();
+
     Wipsnickit.statuses.fetch();
     Wipsnickit.types.fetch();
+
     that._withProjects(function(projects) {
       var indexView = new Wipsnickit.Views.ProjectsIndex({
         collection: Wipsnickit.projects
       });
 
-      that._swapView(indexView);
+      that._appendView(indexView);
     });
   },
 
@@ -28,11 +31,12 @@ Wipsnickit.Routers.Projects = Backbone.Router.extend({
     var that = this;
 
     that._withProject(id, function(project) {
+      that._appendNav(project);
       var showView = new Wipsnickit.Views.ProjectView({
         model: project
       });
 
-      that._swapView(showView);
+      that._appendView(showView);
     });
   },
 
@@ -40,27 +44,41 @@ Wipsnickit.Routers.Projects = Backbone.Router.extend({
     var that = this;
 
     that._withProject(id, function(project) {
+      that._appendNav(project);
       var editView = new Wipsnickit.Views.ProjectForm({
         model: project,
       });
 
-      that._swapView(editView);
+      that._appendView(editView);
     });
   },
 
   new: function() {
     var that = this;
 
+    that._appendNav();
+
     var newView = new Wipsnickit.Views.ProjectForm({
       collection: Wipsnickit.projects,
       model: new Wipsnickit.Models.Project()
     });
 
-    that._swapView(newView);
+    that._appendView(newView);
   },
 
-  _swapView: function(newView) {
-    this.$rootEl.html(newView.render().$el);
+  _appendNav: function(project) {
+    this.$rootEl.empty();
+
+    var route = Backbone.history.fragment;
+    var navView = new Wipsnickit.Views.ProjectsNav({ 
+      route: route,  
+      model: project
+    });
+    this.$rootEl.append(navView.render().el);
+  },
+
+  _appendView: function(newView) {
+    this.$rootEl.append(newView.render().$el);
   },
 
   _withProject: function(id, callback) {

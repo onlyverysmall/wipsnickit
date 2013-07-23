@@ -8,13 +8,10 @@ Wipsnickit.Models.Project = Backbone.Model.extend({
     return response;
   },
 
-  // this isn't working
   toJSON: function () {
     var attrs = _.clone(this.attributes);
     var json = { project: attrs.project };
 
-    //json.project.steps_attributes = this.get('steps').toJSON();
-    //json.project.steps_attributes = json.project.steps;
     var steps_attributes = {};
     for (var i = 0; i < json.project.steps.length; i++) {
       var step = json.project.steps[i];

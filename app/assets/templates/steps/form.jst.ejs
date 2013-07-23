@@ -1,45 +1,51 @@
-  <table class="table table-hover">
-    <thead>
-      <th>Step name</th>
-      <th colspan="2">Notes</th>
-      <th>Completed?</th>
-      <th>Completion date</th>
-    </thead>
-    <tbody>
-      <% _(steps).each(function(step, idx) { %>
-        <tr data-id="<%= step.id %>">
-          <% var jsonRoot = 'project[steps][' + idx + ']' %>
-          <td>
-            <input type="text" name="<%= jsonRoot %>[name]" placeholder="Step description" value="<%= step.escape('name') %>">
-          </td>
-          <td colspan="2">
-            <textarea name="<%= jsonRoot %>[notes]" placeholder="Notes"><%= step.escape('notes') %></textarea>
-          </td>
-          <td>
-            <% var selected = (step.get('completed')) ? 'selected' : '' %>
-            <input type="hidden" name=""<%= jsonRoot %>[completed]" value="false" />
-            <label for="project_steps_attributes_completed">Completed?</label>
-            <input type="checkbox" name="<%= jsonRoot %>[completed]" <%= selected %>>
-          </td>
-          <td>
-            <label for="project_steps_attributes_completion_date">Due Date</label>
-            <input class="span2" type="date" name="<%= jsonRoot %>[completion_date]" id="project_steps_attributes_completion_date" value="<%= step.get('completion_date') %>">
-          </td>
-          <input type="hidden" 
-            name="<%= jsonRoot %>[priority_number]" 
-            value="<%= step.get('priority_number') %>" />
-          <input type="hidden" 
-            name="<%= jsonRoot %>[id]" 
-            value="<%= step.id %>" />
-        </tr>
-      <% }); %>
-
-
-      <tr>
-        <td colspan="5">
-          <input type="submit" value="Submit" class="btn pull-right">
+<table class="table table-hover">
+  <thead>
+    <th>Step name</th>
+    <th colspan="2">Notes</th>
+    <th>Completed?</th>
+    <th>Completion date</th>
+  </thead>
+  <tbody class="steps-rows">
+    <% _(steps).each(function(step, idx) { %>
+      <tr data-id="<%= step.id %>">
+        <% var jsonRoot = 'project[steps][' + idx + ']' %>
+        
+        <td>
+          <input type="text" name="<%= jsonRoot %>[name]" placeholder="Step description" value="<%= step.escape('name') %>">
         </td>
-      </tr>
+        
+        <td colspan="2">
+          <textarea name="<%= jsonRoot %>[notes]" placeholder="Notes"><%= step.escape('notes') %></textarea>
+        </td>
+        
+        <td>
+          <% var selected = (step.get('completed')) ? 'selected' : '' %>
+          <input type="hidden" name="<%= jsonRoot %>[completed]" value="false" />
+          <label for="project_steps_attributes_completed">Completed?</label>
+          <input type="checkbox" name="<%= jsonRoot %>[completed]" <%= selected %>>
+        </td>
+        
+        <td>
+          <label for="project_steps_attributes_completion_date">Due Date</label>
+          <input class="span2" type="date" name="<%= jsonRoot %>[completion_date]" id="project_steps_attributes_completion_date" value="<%= step.get('completion_date') %>">
+        </td>
 
-    </tbody>
-  </table>
+        <input type="hidden" name="<%= jsonRoot %>[priority_number]" value="<%= step.get('priority_number') %>" />
+        <input type="hidden" name="<%= jsonRoot %>[id]" value="<%= step.id %>" />        
+      </tr>
+    <% }); %>
+    <tr>
+      <td colspan="5">
+        <a href="#" class="add-step">Add step</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="5">
+        <input type="submit" value="Submit" class="btn pull-right">
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+

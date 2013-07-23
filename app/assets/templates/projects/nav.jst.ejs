@@ -1,0 +1,11 @@
+<li class="<%= this.homeClass %>">
+  <a href="#">My WIPs</a>
+</li>
+<li class="<%= this.newProjectClass %>">
+  <a href="#api/projects/new">New Project</a>
+</li>
+<% if (this.model) { %>
+  <li class="active">
+    <a href="#<%= this.route %>"><%= this.model.escape('title') %></a>
+  </li>
+<% } %>
