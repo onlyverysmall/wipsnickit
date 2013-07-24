@@ -19,16 +19,17 @@ Wipsnickit.Views.ProjectForm = Backbone.View.extend({
       collection: this.model.get('steps')
     });
 
-      this.$('form').append(steps.render().$el);
+      this.$('.steps').append(steps.render().$el);
     } else {
 
       var blankStep = new Wipsnickit.Models.Step();
-      var steps = new Wipsnickit.Collections.Steps(blankStep);
-      var steps = new Wipsnickit.Views.StepsForm({
-        collection: steps
+      var blankStep2 = new Wipsnickit.Models.Step();
+      var stepsColl = new Wipsnickit.Collections.Steps([blankStep, blankStep2]);
+      var stepsForm = new Wipsnickit.Views.StepsForm({
+        collection: stepsColl
       });
 
-      this.$('form').append(steps.render().$el);
+      this.$('.steps').append(stepsForm.render().$el);
     }
 
     return this;

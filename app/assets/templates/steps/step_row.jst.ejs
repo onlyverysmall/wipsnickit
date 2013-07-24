@@ -1,0 +1,25 @@
+  <div class="step-row" data-id="<%= this.idx %>">
+  <% var jsonRoot = 'project[steps][' + this.idx + ']' %>
+  
+  <div class="step-input">
+    <input type="text" name="<%= jsonRoot %>[name]" placeholder="Step description" value="<%= step.escape('name') %>">
+  </div>
+  
+  <div class="step-input">
+    <textarea name="<%= jsonRoot %>[notes]" placeholder="Optional: Notes"><%= step.escape('notes') %></textarea>
+  </div>
+  
+  <div class="step-input">
+    <label for="project_steps_attributes_completion_date">Optional: Due Date</label>
+    <input class="span2" type="date" name="<%= jsonRoot %>[completion_date]" id="project_steps_attributes_completion_date" value="<%= step.escape('completion_date') %>">
+  </div>
+
+  <div class="step-input">
+    <% var selected = (step.escape('completed')) ? 'checked' : '' %>
+    <input type="hidden" name="<%= jsonRoot %>[completed]" value="false" />
+    <label for="project_steps_attributes_completed">Done?</label>
+    <input type="checkbox" id="project_steps_attributes_completed" name="<%= jsonRoot %>[completed]" <%= selected %>>
+  </div>
+  
+  <input type="hidden" name="<%= jsonRoot %>[id]" value="<%= step.id %>" />        
+</div>

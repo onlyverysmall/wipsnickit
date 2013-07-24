@@ -20,3 +20,25 @@ body {
   padding: 10px;
   border-radius: 5px;
 }
+
+.steps {
+  display: block;
+  overflow: auto;
+  clear: both;
+}
+
+.project-row, .step-row {
+  display: block;
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.project-input, .step-input {
+  float: left;
+  margin-right: 30px;
+}
+
+.add-step-btn {
+  display: block;
+  clear: both;
+}

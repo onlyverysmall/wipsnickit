@@ -5,7 +5,6 @@
 #  id              :integer          not null, primary key
 #  name            :string(255)      not null
 #  project_id      :integer          not null
-#  priority_number :integer          not null
 #  notes           :text
 #  completed       :boolean          default(FALSE), not null
 #  completion_date :date
@@ -14,13 +13,12 @@
 #
 
 class Step < ActiveRecord::Base
-  attr_accessible :name, :project_id, :priority_number, :notes, 
-    :completion_date, :completed
+  attr_accessible :name, :project_id, :notes, :completion_date, :completed
 
-  validates :name, :project, :priority_number, presence: true
+  validates :name, :project, presence: true
 
   belongs_to :project
   has_one :user, through: :project
 
-  default_scope :order => 'priority_number'
+  default_scope order('id ASC')
 end

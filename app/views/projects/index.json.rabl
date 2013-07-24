@@ -10,5 +10,5 @@ node :status_name do |p|
 end
 
 child :steps do
-  attributes :id, :name, :project_id, :priority_number, :notes, :completed, :completion_date
+  attributes :id, :name, :project_id, :notes, :completed, :completion_date
 end

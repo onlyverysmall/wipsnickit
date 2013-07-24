@@ -16,6 +16,8 @@
 class Project < ActiveRecord::Base
   attr_accessible :title, :type_id, :user_id, :status_id, :completion_date, :notes, :steps_attributes
 
+  default_scope order('completion_date ASC')
+
   validates :title, :type_id, :user_id, :status_id, presence: true
 
   belongs_to :type

@@ -1,41 +1,46 @@
 <div class="main">
   <form>
-    <table>
-      <tr>
-        <td>
-          <input type="text" name="project[title]" placeholder="Project title" value="<%= project.escape('title') %>">
-        </td>
-        <td>
-          <select name="project[type_id]" class="span2">            
-            <option value="">Project Type</option>
-            <% types.each(function(type) { %>
-              <% var typeSelect = (project.get('type_id') == type.id) ? 'selected' : '' %>
-              <option value="<%= type.id %>" <%= typeSelect %>>
-                <%= type.escape('name') %>
-              </option>
-            <% }); %>
-          </select>
-        </td>
-        <td>
-          <select name="project[status_id]" class="span2">
-            <option value="">Status</option>
-            <% statuses.each(function(status) { %>
-              <% var selected = (project.get('status_id') == status.id) ? 'selected' : '' %>
-              <option value="<%= status.id %>" <%= selected %>>
-                <%= status.escape('name') %>
-              </option>
-            <% }); %>
-          </select>
-        </td>
-        <td>
-          <label for="project_completion_date">Completion Date</label>
-          <input type="date" name="project[completion_date]" id="project_completion_date" value="<%= project.get('completion_date') %>">
-        </td>
-        <td>
-          <label for="project_notes">Optional: Notes</label>
-          <textarea name="project[notes]" id="project_notes" placeholder="Notes"><%= project.escape('notes') %></textarea>
-        </td>
-      </tr>
-    </form>
-  </table>
+    <h4>Project</h4>
+    <div class="project-input">
+      <input type="text" name="project[title]" placeholder="Project title" value="<%= project.escape('title') %>">
+    </div>
+
+    <div class="project-input">   
+      <textarea name="project[notes]" id="project_notes" placeholder="Optional: Project Notes"><%= project.escape('notes') %></textarea>
+    </div>
+
+    <div class="project-input">
+      <select name="project[type_id]" class="span2">            
+        <option value="">Project Type</option>
+        <% types.each(function(type) { %>
+          <% var typeSelect = (project.get('type_id') == type.id) ? 'selected' : '' %>
+          <option value="<%= type.id %>" <%= typeSelect %>>
+            <%= type.escape('name') %>
+          </option>
+        <% }); %>
+      </select>
+    </div>
+
+    <div class="project-input">
+      <select name="project[status_id]" class="span2">
+        <option value="">Status</option>
+        <% statuses.each(function(status) { %>
+          <% var selected = (project.get('status_id') == status.id) ? 'selected' : '' %>
+          <option value="<%= status.id %>" <%= selected %>>
+            <%= status.escape('name') %>
+          </option>
+        <% }); %>
+      </select>
+    </div>
+
+    <div class="project-input">
+      <label for="project_completion_date">Optional: Due Date</label>
+      <input type="date" class="span2" name="project[completion_date]" id="project_completion_date" value="<%= project.get('completion_date') %>">
+    </div>
+
+    <div class="steps">
+      <hr>
+      <h4>Steps</h4>
+    </div>
+  </form>
 </div>
