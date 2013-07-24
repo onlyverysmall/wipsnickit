@@ -37,7 +37,6 @@ Wipsnickit.Views.ProjectForm = Backbone.View.extend({
 
   submit: function(event) {
     event.preventDefault();
-    console.log('you submitted! have a cookie');
 
     var that = this;
     var attrs = $(event.target.form).serializeJSON();
@@ -51,10 +50,8 @@ Wipsnickit.Views.ProjectForm = Backbone.View.extend({
     this.model.set(attrs);
 
     if (this.model.isNew()) {
-      console.log('this is a new model!');
       this.collection.create(this.model, options);
     } else {
-      console.log('this isn\'t a new model!');
       this.model.save({}, options);
     }
   }

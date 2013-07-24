@@ -19,11 +19,15 @@ Wipsnickit.Routers.Projects = Backbone.Router.extend({
     Wipsnickit.types.fetch();
 
     that._withProjects(function(projects) {
-      var indexView = new Wipsnickit.Views.ProjectsIndex({
-        collection: Wipsnickit.projects
-      });
+      if (projects.isEmpty()) {
+        that.navigate('api/projects/new', { trigger: true })
+      } else {
+        var indexView = new Wipsnickit.Views.ProjectsIndex({
+          collection: Wipsnickit.projects
+        });
 
-      that._appendView(indexView);
+        that._appendView(indexView);
+      };
     });
   },
 
