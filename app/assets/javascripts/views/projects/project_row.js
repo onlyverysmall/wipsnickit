@@ -6,7 +6,7 @@ Wipsnickit.Views.ProjectRow = Backbone.View.extend({
   },
 
   initialize: function () {
-    // put data-id
+    // put data-id?
   },
 
   template: JST['projects/project_row'],
@@ -23,7 +23,7 @@ Wipsnickit.Views.ProjectRow = Backbone.View.extend({
 
   editRow: function(event) {
     var id = $(event.currentTarget).attr('data-id');
-    console.log(id);
+    
     // create a function on the model to edit the row, call it here
     this.model.edit();
   }

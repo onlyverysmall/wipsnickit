@@ -13,17 +13,20 @@ Wipsnickit.Models.Project = Backbone.Model.extend({
     var json = { project: attrs.project };
 
     var steps_attributes = {};
-    for (var i = 0; i < json.project.steps.length; i++) {
-      var step = json.project.steps[i];
-      
-      // strip out empty steps before sending up to server
-      if (step.name === '') {
-        delete step;
-      } else {
-        steps_attributes[i] = step;
-      } 
-    }
 
+    if (json.project.steps) {  
+      for (var i = 0; i < json.project.steps.length; i++) {
+        var step = json.project.steps[i];
+        
+        // strip out empty steps before sending up to server
+        if (step.name === '') {
+          delete step;
+        } else {
+          steps_attributes[i] = step;
+        } 
+      }
+    }
+    
     json.project.steps_attributes = steps_attributes;
     delete json.project.steps;
 
@@ -31,6 +34,6 @@ Wipsnickit.Models.Project = Backbone.Model.extend({
   }, 
 
   edit: function () {
-    // console.log(this);
+    
   }
 });

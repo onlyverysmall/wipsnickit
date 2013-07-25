@@ -14,11 +14,9 @@ Wipsnickit.Views.AddStepBtn = Backbone.View.extend({
 
   addStep: function(event) {
     event.preventDefault();
-    console.log('clicky');
 
     var idx = $('.steps-rows').children().last().children().first().data('id') + 1;
-    console.log(idx);
-
+    
     var stepRow = new Wipsnickit.Views.StepRow({
         model: new Wipsnickit.Models.Step(),
         idx: idx
