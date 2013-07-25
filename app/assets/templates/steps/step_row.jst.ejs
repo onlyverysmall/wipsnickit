@@ -1,4 +1,4 @@
-  <div class="step-row" data-id="<%= this.idx %>">
+<div class="step-row" data-id="<%= this.idx %>">
   <% var jsonRoot = 'project[steps][' + this.idx + ']' %>
   
   <div class="step-input">
@@ -15,10 +15,10 @@
   </div>
 
   <div class="step-input">
-    <% var selected = (step.escape('completed')) ? 'checked' : '' %>
+    <% var checked = (step.escape('completed') === 'true') ? 'checked' : '' %>
     <input type="hidden" name="<%= jsonRoot %>[completed]" value="false" />
     <label for="project_steps_attributes_completed">Done?</label>
-    <input type="checkbox" id="project_steps_attributes_completed" name="<%= jsonRoot %>[completed]" <%= selected %>>
+    <input type="checkbox" id="project_steps_attributes_completed" name="<%= jsonRoot %>[completed]" <%= checked %>>
   </div>
   
   <input type="hidden" name="<%= jsonRoot %>[id]" value="<%= step.id %>" />        
