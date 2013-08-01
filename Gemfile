@@ -6,6 +6,7 @@ gem 'backbone-on-rails'
 gem 'bcrypt-ruby', '~> 3.0.0', require: "bcrypt"
 gem 'jquery-rails'
 gem 'rabl'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'annotate'
