@@ -15,8 +15,16 @@ Wipsnickit.Views.AddStepBtn = Backbone.View.extend({
   addStep: function(event) {
     event.preventDefault();
 
-    var idx = $('.steps-rows').children().last().children().first().data('id') + 1;
-    
+    // This is a really hilarious hack. Ned would murder you if he saw you doing this.
+    var currentIndex = $('.steps-rows').children().last().children().first().data('id');
+
+    console.log(currentIndex);
+    if (!currentIndex) {
+      var idx = 0;
+    } else {
+      var idx = currentIndex + 1;
+    }
+
     var stepRow = new Wipsnickit.Views.StepRow({
         model: new Wipsnickit.Models.Step(),
         idx: idx

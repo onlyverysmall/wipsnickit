@@ -20,13 +20,13 @@ Wipsnickit.Models.Project = Backbone.Model.extend({
         
         // strip out empty steps before sending up to server
         if (step.name === '') {
-          delete step;
+          json.project.steps.splice(i, 1);
         } else {
           steps_attributes[i] = step;
         } 
       }
     }
-    
+
     json.project.steps_attributes = steps_attributes;
     delete json.project.steps;
 
